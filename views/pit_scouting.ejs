@@ -1,8 +1,99 @@
 <%-include ('templates/header');-%>
     
 
-    <h1 style="text-align:center">Welcome to Convergence Pit Scouting</h1>
+<h1 style="text-align:center">Convergence Pit Scouting</h1>
+
+<div class="well">
+    <form id="teamPitInfo">
+        <div class="teamAndRobotInfo">
+            <label style="display: inline;" for="teamNumberInput">Team Number</label>
+            <input type="text" class="form-control-sm" id="teamNumberInput" placeholder="7429">
+            <div>&nbsp;</div>
+            <label style="display: inline;" for="teamWeightInput">Robot Weight (lbs) </label>
+            <input type="text" class="form-control-sm" id="teamWeightInput" placeholder="150">
+            <div>&nbsp;</div>
+            <label style="display: inline;" for="teamHeightInput">Robot Height (inches) </label>
+            <input type="text" class="form-control-sm" id="teamHeightInput" placeholder="120">
+            <div>&nbsp;</div>
+            <label style="display: inline;" for="teamLengthInput">Robot Length (inches) </label>
+            <input type="text" class="form-control-sm" id="teamLengthInput" placeholder="24">
+            <div>&nbsp;</div>
+            <label style="display: inline;" for="teamWidthInput">Robot Width (inches) </label>
+            <input type="text" class="form-control-sm" id="teamWidthInput" placeholder="24">
+            <div>&nbsp;</div>
+        </div>
+
+        <div class="robotInfo">
+            <!--Drivetrain-->
+            <label for="robotDrivetrain">Robot Drivetrain</label>
+                <select class="form-control-sm" id="robotDrivetrain">
+                    <option>Swerve</option>
+                    <option>Mecanum </option>
+                    <option>Skid Steer</option>
+                </select>
+                <div>&nbsp;</div>
+            <!--Drivetrain Motors-->
+            <label for="robotDrivetrainMotors">Robot Drivetrain Motors</label>
+                <select class="form-control-sm" id="robotDrivetrainMotors">
+                    <option>Neo</option>
+                    <option>Falcon 500 </option>
+                    <option>CIM</option>
+                </select>
+                <div>&nbsp;</div>
+            <!--Free Speed-->
+            <label for="robotFreespeedinput">Free Speed (ft/s)</label>
+            <input type="text" class="form-control-sm" id="robotFreespeedInput" placeholder="10">
+            <div>&nbsp;</div>
+            <!--Game Element Pickup-->
+            <label for="gameElementPickup">Game Element Pickup</label>
+                <select class="form-control-sm" id="gameElementPickup">
+                    <option>Cone Floor</option>
+                    <option>Cone Substation </option>
+                    <option>Cube Floor</option>
+                    <option>Cube Substation</option>
+                </select>
+                <div>&nbsp;</div>
+            <!--Game Element Scoring-->
+            <label for="gameElementScoring">Game Element Scoring</label>
+            <select class="form-control-sm" id="gameElementScoring">
+                <option>Floor</option>
+                <option>Mid Cone</option>
+                <option>Mid Cube</option>
+                <option>High Cone</option>
+                <option>High Cube</option>
+                <option>Pushbot Only</option>
+            </select>
+            <div>&nbsp;</div>
+            <!--Hang Off-->
+            <label for="hangOffChargeStation">Hang Off Charge Station</label>
+            <select class="form-control-sm" id="hangOffChargeStation">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <div>&nbsp;</div>
+            <!--Auto Start Position-->
+            <label for="autoStartPosition">Auto Start Position</label>
+            <select class="form-control-sm" id="autoStartPosition">
+                <option>Left</option>
+                <option>Center</option>
+                <option>Right</option>
+            </select>
+            <div>&nbsp;</div>
+            <!--Auto Balence-->
+            <label for="autoBalance">Auto Start Position</label>
+            <select class="form-control-sm" id="autoBalance">
+                <option>No</option>
+                <option>Yes</option>
+            </select>
+            <div>&nbsp;</div>
+
+            <!--Save Team Button-->
+            <button type="button" class="btn btn-success" id="saveTeamBtn">Save Team</button>
 
 
+        </div>
+
+    </form>
+</div>
 
 <%- include('templates/footer'); -%>
