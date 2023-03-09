@@ -1,0 +1,58 @@
+<%-include ('templates/header');-%>
+
+
+<h1 style="text-align: center;">Admin Page</h1><br></br>
+    
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Event Settings Form -->
+<legend style="text-align: center;">Event Settings</legend>
+
+<!-- Event Name-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Event Name</label>  
+  <div class="col-md-4">
+  <input id="Event_Name" name="textinput" type="text" placeholder="EventName" class="form-control input-md" required="">
+  <span class="help-block">Event Name</span>  
+  </div>
+</div>
+
+<!-- TBA Event Code-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">TBA Event Code</label>  
+  <div class="col-md-4">
+  <input id="TBA_Event_Code" name="textinput" type="text" placeholder="TBA Event Code" class="form-control input-md" required="">
+  <span class="help-block">Event Code from TBA</span>  
+  </div>
+</div>
+
+<!-- TBA Auth ID Input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">TBA Auth ID</label>  
+  <div class="col-md-4">
+  <input id="TBA_Auth_ID" name="textinput" type="text" placeholder="TBA Auth ID" class="form-control input-md">
+  <span class="help-block">Contact TBA for this ID</span>  
+  </div>
+</div>
+
+<!-- Save Button -->
+<div class="form-group">
+  <div class="row align-items-end" style="text-align: center;">
+    <button id="Save_Event" name="singleButton" class="btn btn-success">Save Event</button>
+    <button id="Load_Teams" name="singlebutton" class="btn btn-primary">Load Teams</button>
+    <br><br>
+    <button id="Delete_Teams" name="singlebutton" class="btn btn-warning">Delete Teams</button>
+    <button id="Delete_Event" name="singlebutton" class="btn btn-danger">Delete Event</button>
+  </div>
+</div>
+
+</fieldset>
+
+</form>
+
+
+
+
+<%- include('templates/footer'); -%>
+
