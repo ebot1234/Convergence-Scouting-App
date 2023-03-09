@@ -1,7 +1,155 @@
 <%-include ('templates/header');-%>
    
+<link rel="stylesheet" href="matchscout.css">
 
-<h1 style="text-align: center;">Welcome to Convergence Match Scouting</h1>
+<h1>Convergence Match Scouting</h1>
 
+<div class="well">
+    <label for="teamNumberInput">Team Number:</label>
+    <input type="text" style="text-align: center;" class="form-control-sm" id="teamNumberInput" placeholder="7429">
+    <div>&nbsp;</div>
+    <label for="matchNumberInput">Match Number:</label>
+    <input type="text" style="text-align: center;" class="form-control-sm" id="matchNumberInput" placeholder="0">
+    <div>&nbsp;</div>
+    <button type="button" class="btn btn-primary" id="loadTeamAndMatch">Load Team and Match</button>
+</div>
+
+<div class="well">
+    <fieldset>
+        <legend>Scouting Match: &nbsp;</legend>
+        <p placeholder="matchNumber" id="matchNumber"></p>
+        <div class="scoring-section">
+            <br>
+            <fieldset id="autoFieldSet" style="border: 2px solid red; width: auto;">
+            <legend style="width:auto; padding-left: 3px;" >Auto</legend>
+            <div class="auto-scoring-header">
+                <!--Auto Placement-->
+                <div style="padding-left: 10px; display:inline">Auto Placement</div>
+                <div class="btn-group" role="group" aria-label="AutoPlacement"  style="padding-left: 10px;">
+                    <button type="button" class="btn btn-primary" id="autoPlacementLeft">Left</button>
+                    <button type="button" class="btn btn-primary" id="autoPlacementCenter">Center</button>
+                    <button type="button" class="btn btn-primary" id="autoPlacementRight">Right</button>
+                </div>
+                <div>&nbsp;</div>
+                <!--Auto Mobility-->
+                <div style="padding-left: 10px; display:inline">Auto Mobility</div> 
+                <div class="btn-group" role="group" aria-label="AutoMobility"  style="padding-left: 31px;">
+                    <button type="button" class="btn btn-primary" id="autoMobilityNo">No</button>
+                    <button type="button" class="btn btn-primary" id="autoMobiltyYes">Yes</button>
+                </div>
+                <div>&nbsp;</div>
+                <!--Auto Balance-->
+                <div style="padding-left: 10px; display:inline">Auto Balance</div> 
+                <div class="btn-group" role="group" aria-label="autoBalance"  style="padding-left: 28px;">
+                    <button type="button" class="btn btn-primary" id="autoBalanceNo">No</button>
+                    <button type="button" class="btn btn-primary" id="autoBalanceYes">Yes</button>
+                    <button type="button" class="btn btn-primary" id="autoBalanceFell">Fell</button>
+                </div>
+                <div>&nbsp;</div>
+                
+                <!--Auto Cone Placement-->
+                <label style="font-weight: lighter; padding-left: 10px;" for="autoConePlacementSelect1">Auto Cone High Placement</label>
+                <select class="form-control-sm" id="autoConePlacementSelect1">
+                    <option>0</option>
+                    <option>1 High</option>
+                    <option>2 High</option>
+                    <option>3 High</option>
+                    <option>4 High</option>
+                </select>
+                <div>&nbsp;</div>
+                <label style="font-weight: lighter; padding-left: 10px;" for="autoConePlacementSelect2">Auto Cone Low Placement</label>
+                <select class="form-control-sm" id="autoConePlacementSelect2">
+                    <option>0</option>
+                    <option>1 Low</option>
+                    <option>2 Low</option>
+                    <option>3 Low</option>
+                    <option>4 Low</option>
+                </select>
+                <div>&nbsp;</div>
+
+                <!--Auto Cube Placement-->
+                <label style="font-weight: lighter; padding-left: 10px;" for="autoCubePlacementSelect1">Auto Cube Low Placement</label>
+                <select class="form-control-sm" id="autoCubePlacementSelect1">
+                    <option>0</option>
+                    <option>1 Low</option>
+                    <option>2 Low</option>
+                    <option>3 Low</option>
+                    <option>4 Low</option>
+                </select>
+                <div>&nbsp;</div>
+                <label style="font-weight: lighter; padding-left: 10px;" for="autoCubePlacementSelect2">Auto Cube High Placement</label>
+                <select class="form-control-sm" id="autoCubePlacementSelect2">
+                    <option>0</option>
+                    <option>1 High</option>
+                    <option>2 High</option>
+                    <option>3 High</option>
+                    <option>4 High</option>
+                </select>
+                <div>&nbsp;</div>
+            </div>
+            </fieldset>
+
+            <br>
+
+            <fieldset id="teleopFieldSet" style="border: 2px solid blue; width: auto;">
+                <legend style="width:auto">Teleop</legend>
+                <div class="teleop-scoring-header">
+                 <!--Tele Balance-->
+                 <div style="padding-left: 10px; display:inline">Tele Balance</div> 
+                 <div class="btn-group" role="group" aria-label="teleBalance"  style="padding-left: 28px;">
+                     <button type="button" class="btn btn-primary" id="teleBalanceNo">No</button>
+                     <button type="button" class="btn btn-primary" id="teleBalanceYes">Yes</button>
+                     <button type="button" class="btn btn-primary" id="teleBalanceFell">Fell</button>
+                 </div>
+                 <div>&nbsp;</div>
+                 
+                 <!--Tele Cone Placement-->
+                 <label style="font-weight: lighter; padding-left: 10px;" for="teleConePlacementSelect1">Tele Cone High Placement</label>
+                 <select class="form-control-sm" id="teleConePlacementSelect1">
+                     <option>0</option>
+                     <option>1 High</option>
+                     <option>2 High</option>
+                     <option>3 High</option>
+                     <option>4 High</option>
+                 </select>
+                 <div>&nbsp;</div>
+                 <label style="font-weight: lighter; padding-left: 10px;" for="teleConePlacementSelect2">Tele Cone Low Placement</label>
+                 <select class="form-control-sm" id="teleConePlacementSelect2">
+                     <option>0</option>
+                     <option>1 Low</option>
+                     <option>2 Low</option>
+                     <option>3 Low</option>
+                     <option>4 Low</option>
+                 </select>
+                 <div>&nbsp;</div>
+ 
+                 <!--Tele Cube Placement-->
+                 <label style="font-weight: lighter; padding-left: 10px;" for="teleCubePlacementSelect1">Tele Cube Low Placement</label>
+                 <select class="form-control-sm" id="teleCubePlacementSelect1">
+                     <option>0</option>
+                     <option>1 Low</option>
+                     <option>2 Low</option>
+                     <option>3 Low</option>
+                     <option>4 Low</option>
+                 </select>
+                 <div>&nbsp;</div>
+                 <label style="font-weight: lighter; padding-left: 10px;" for="teleCubePlacementSelect2">Tele Cube High Placement</label>
+                 <select class="form-control-sm" id="teleCubePlacementSelect2">
+                     <option>0</option>
+                     <option>1 High</option>
+                     <option>2 High</option>
+                     <option>3 High</option>
+                     <option>4 High</option>
+                 </select>
+                 <div>&nbsp;</div>
+             </div>
+                </div>
+            </fieldset>
+            
+        </div>
+
+    </fieldset>
+    
+</div>
    
 <%- include('templates/footer'); -%>
