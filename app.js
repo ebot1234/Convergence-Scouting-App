@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const httpPort = 3000;
+const httpPort = 80;
 
 
 app.use(express.static("public/css"));
