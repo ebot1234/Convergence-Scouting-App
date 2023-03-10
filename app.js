@@ -1,7 +1,12 @@
 const express = require("express");
+const request = require("request");
+const tba = require("./tba")
+
 const app = express();
 const httpPort = 3000;
-
+//tba.function
+tba.testAPI('2020vapor');
+//tba.getTeamsByEvent("bob");
 
 app.use(express.static("public/css"));
 app.use(express.static("public/js"));
@@ -37,6 +42,10 @@ app.get("/admin", function(req, res){
 app.get("*", function(req, res){
     res.send("404 Page Not Found!");
 })
+
+
+
+
 
 app.listen(httpPort, function(){
     console.log("Convergence Scouting Server Running on Port:" + httpPort);
