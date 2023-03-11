@@ -55,19 +55,19 @@ function createEventTeamsTable(){
 //Create TeamInfo Table
 function createTeamInfoTable(){
     conn.query(`CREATE TABLE Team_Info (
-        Number INT,
-        Weight INT,
-        Height INT,
-        Length INT,
-        Width INT,
-        Drivetrain INT,
-        Drivetrain_Motors INT,
-        FreeSpeed INT,
-        Element_Pickup INT,
-        Element_Scoring INT,
-        Hang_Charge INT,
-        Start_Position INT,
-        Auto_Balence INT
+        Number Text,
+        Weight Text,
+        Height Text,
+        Length Text,
+        Width Text,
+        Drivetrain Text,
+        Drivetrain_Motors Text,
+        FreeSpeed Text,
+        Element_Pickup Text,
+        Element_Scoring Text,
+        Hang_Charge Text,
+        Start_Position Text,
+        Auto_Balence Text
     )`, function(err, result){
         if(err) {
             console.error(err);

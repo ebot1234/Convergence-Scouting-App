@@ -54,18 +54,18 @@ app.post('/pit_scouting', function(req, res, next){
     console.log(data);
 
     number = `${data.teamNumberInput}`;
-    weight = `${data.teamNumberInput}`;
-    height = `${data.teamNumberInput}`;
-    length = `${data.teamNumberInput}`;
-    width = `${data.teamNumberInput}`;
-    drivetrain = `${data.teamNumberInput}`;
-    drivetrain_motors = `${data.teamNumberInput}`;
-    free_speed = `${data.teamNumberInput}`;
-    element_pickup = `${data.teamNumberInput}`;
-    element_scoring = `${data.teamNumberInput}`;
-    hang_charge_station = `${data.teamNumberInput}`;
-    start_position = `${data.teamNumberInput}`;
-    auto_balence = `${data.teamNumberInput}`;
+    weight = `${data.teamWeightInput}`;
+    height = `${data.teamHeightInput}`;
+    length = `${data.teamLengthInput}`;
+    width = `${data.teamWidthInput}`;
+    drivetrain = `${data.robotDrivetrain}`;
+    drivetrain_motors = `${data.robotDrivetrainMotors}`;
+    free_speed = `${data.robotFreespeedinput}`;
+    element_pickup = `${data.gameElementPickup}`;
+    element_scoring = `${data.gameElementScoring}`;
+    hang_charge_station = `${data.hangOffChargeStation}`;
+    start_position = `${data.autoStartPosition}`;
+    auto_balence = `${data.autoBalance}`;
 
     db.createNewEventDatabase(eventName);
     db.insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence);
