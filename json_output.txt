@@ -1,0 +1,35 @@
+This file contains the JSON output for each form
+
+PIT SCOUTING:
+{
+  teamNumberInput: '',
+  teamWeightInput: '',
+  teamHeightInput: '',
+  teamLengthInput: '',
+  teamWidthInput: '',
+  robotDrivetrain: 'unknown',
+  robotDrivetrainMotors: 'unknown',
+  robotFreespeedinput: '',
+  gameElementPickup: 'unknown',
+  gameElementScoring: 'unknown',
+  hangOffChargeStation: 'unknown',
+  autoStartPosition: 'unknown',
+  autoBalance: 'unknown'
+}
+
+MATCH SCOUTING:
+{
+  teamNumberInput: '',
+  teamWeightInput: '',
+  teamHeightInput: '',
+  teamLengthInput: '',
+  teamWidthInput: '',
+  robotDrivetrain: 'unknown',
+  robotDrivetrainMotors: 'unknown',
+  robotFreespeedinput: '',
+  gameElementPickup: 'unknown',
+  gameElementScoring: 'unknown',
+  hangOffChargeStation: 'unknown',
+  autoStartPosition: 'unknown',
+  autoBalance: 'unknown'
+}

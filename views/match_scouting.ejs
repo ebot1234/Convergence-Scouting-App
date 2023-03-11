@@ -4,22 +4,9 @@
 
 <h1>Convergence Match Scouting</h1>
 
-<div class="well">
-    <label for="teamNumberInput">Team Number:</label>
-    <input type="text" style="text-align: center;" class="form-control-sm" id="teamNumberInput" placeholder="7429">
-    <div>&nbsp;</div>
-    <label for="matchNumberInput">Match Number:</label>
-    <input type="text" style="text-align: center;" class="form-control-sm" id="matchNumberInput" placeholder="0">
-    <div>&nbsp;</div>
-    <button type="button" class="btn btn-primary" id="loadTeamAndMatch">Load Team and Match</button>
-</div>
 
-<div class="well">
-    <fieldset>
-        <legend>Scouting Match: &nbsp;</legend>
-        <p placeholder="matchNumber" id="matchNumber"></p>
-        <div class="scoring-section">
-            <br>
+<form action="/match_scouting" method="POST">
+    <div class="well col-lg-6 col-lg-offset-3">
             <fieldset id="autoFieldSet" style="border: 2px solid red; width: auto;">
             <legend style="width:auto; padding-left: 3px;" >Auto</legend>
             <div class="auto-scoring-header">
@@ -48,44 +35,33 @@
                 <div>&nbsp;</div>
                 
                 <!--Auto Cone Placement-->
-                <label style="font-weight: lighter; padding-left: 10px;" for="autoConePlacementSelect1">Auto Cone High Placement</label>
-                <select class="form-control-sm" id="autoConePlacementSelect1">
-                    <option>0</option>
-                    <option>Floor</option>
-                    <option>1 High</option>
-                    <option>2 High</option>
-                    <option>3 High</option>
-                    <option>4 High</option>
+                <label style="padding-left: 10px;" for="autoConePlacementSelect1">Auto Cone High Placement</label>
+                <select select name="autoConeHighScore" id="autoConeHighScore">
+                    <option id="None" name="None"value="None">None</option>
+                    <option id="1" name="1"value="1">1 High</option>
+                    <option id="2" name="2"value="2">2 High</option>
+                    <option id="3" name="3"value="3">3 High</option>
+                    <option id="4" name="4"value="4">4 High</option>
                 </select>
                 <div>&nbsp;</div>
-                <label style="font-weight: lighter; padding-left: 10px;" for="autoConePlacementSelect2">Auto Cone Low Placement</label>
-                <select class="form-control-sm" id="autoConePlacementSelect2">
-                    <option>0</option>
-                    <option>1 Low</option>
-                    <option>2 Low</option>
-                    <option>3 Low</option>
-                    <option>4 Low</option>
+                <label style= "padding-left: 10px;" for="autoConeLowScore">Auto Cone Low Placement</label>
+                <select select name="autoConeLowScore" id="autoConeLowScore">
+                    <option id="None" name="None"value="None">None</option>
+                    <option id="Floor" name="Floor"value="Floor">Floor</option>
+                    <option id="1" name="1"value="1">1 Low</option>
+                    <option id="2" name="2"value="2">2 Low</option>
+                    <option id="3" name="3"value="3">3 Low</option>
+                    <option id="4" name="4"value="4">4 Low</option>
                 </select>
                 <div>&nbsp;</div>
 
                 <!--Auto Cube Placement-->
-                <label style="font-weight: lighter; padding-left: 10px;" for="autoCubePlacementSelect1">Auto Cube Low Placement</label>
-                <select class="form-control-sm" id="autoCubePlacementSelect1">
-                    <option>0</option>
-                    <option>Floor</option>
-                    <option>1 Low</option>
-                    <option>2 Low</option>
-                    <option>3 Low</option>
-                    <option>4 Low</option>
-                </select>
-                <div>&nbsp;</div>
-                <label style="font-weight: lighter; padding-left: 10px;" for="autoCubePlacementSelect2">Auto Cube High Placement</label>
-                <select class="form-control-sm" id="autoCubePlacementSelect2">
-                    <option>0</option>
-                    <option>1 High</option>
-                    <option>2 High</option>
-                    <option>3 High</option>
-                    <option>4 High</option>
+                <label style="padding-left: 10px;" for="autoCubeScore">Auto Cube Placement</label>
+                <select select name="autoCubeScore" id="autoCubeScore">
+                    <option id="None" name="None"value="None">None</option>
+                    <option id="Floor" name="Floor"value="Floor">Floor</option>
+                    <option id="Mid" name="Mid"value="Mid">Mid</option>
+                    <option id="High" name="High"value="High">High</option>
                 </select>
                 <div>&nbsp;</div>
             </div>
@@ -106,54 +82,41 @@
                  <div>&nbsp;</div>
                  
                  <!--Tele Cone Placement-->
-                 <label style="font-weight: lighter; padding-left: 10px;" for="teleConePlacementSelect1">Tele Cone High Placement</label>
-                 <select class="form-control-sm" id="teleConePlacementSelect1">
-                     <option>0</option>
-                     <option>1 High</option>
-                     <option>2 High</option>
-                     <option>3 High</option>
-                     <option>4 High</option>
-                 </select>
-                 <div>&nbsp;</div>
-                 <label style="font-weight: lighter; padding-left: 10px;" for="teleConePlacementSelect2">Tele Cone Low Placement</label>
-                 <select class="form-control-sm" id="teleConePlacementSelect2">
-                     <option>0</option>
-                     <option>Floor</option>
-                     <option>1 Low</option>
-                     <option>2 Low</option>
-                     <option>3 Low</option>
-                     <option>4 Low</option>
-                 </select>
-                 <div>&nbsp;</div>
- 
-                 <!--Tele Cube Placement-->
-                 <label style="font-weight: lighter; padding-left: 10px;" for="teleCubePlacementSelect1">Tele Cube Low Placement</label>
-                 <select class="form-control-sm" id="teleCubePlacementSelect1">
-                     <option>0</option>
-                     <option>1 Low</option>
-                     <option>2 Low</option>
-                     <option>3 Low</option>
-                     <option>4 Low</option>
-                 </select>
-                 <div>&nbsp;</div>
-                 <label style="font-weight: lighter; padding-left: 10px;" for="teleCubePlacementSelect2">Tele Cube High Placement</label>
-                 <select class="form-control-sm" id="teleCubePlacementSelect2">
-                     <option>0</option>
-                     <option>Floor</option>
-                     <option>1 High</option>
-                     <option>2 High</option>
-                     <option>3 High</option>
-                     <option>4 High</option>
-                 </select>
-                 <div>&nbsp;</div>
-             </div>
-                </div>
-            </fieldset>
-            
-        </div>
+                <label style="padding-left: 10px;" for="teleConeHighScore">Auto Cone High Placement</label>
+                <select select name="teleConeHighScore" id="teleConeHighScore">
+                    <option id="None" name="None"value="None">None</option>
+                    <option id="1" name="1"value="1">1 High</option>
+                    <option id="2" name="2"value="2">2 High</option>
+                    <option id="3" name="3"value="3">3 High</option>
+                    <option id="4" name="4"value="4">4 High</option>
+                </select>
+                <div>&nbsp;</div>
+                <label style= "padding-left: 10px;" for="teleConeLowScore">Tele Cone Low Placement</label>
+                <select select name="teleConeLowScore" id="teleConeLowScore">
+                    <option id="None" name="None"value="None">None</option>
+                    <option id="Floor" name="Floor"value="Floor">Floor</option>
+                    <option id="1" name="1"value="1">1 Low</option>
+                    <option id="2" name="2"value="2">2 Low</option>
+                    <option id="3" name="3"value="3">3 Low</option>
+                    <option id="4" name="4"value="4">4 Low</option>
+                </select>
+                <div>&nbsp;</div>
 
-    </fieldset>
-    
-</div>
+                <!--Tele Cube Placement-->
+                <label style="padding-left: 10px;" for="teleCubeScore">Auto Cube Placement</label>
+                <select select name="teleCubeScore" id="teleCubeScore">
+                    <option id="None" name="None"value="None">None</option>
+                    <option id="Floor" name="Floor"value="Floor">Floor</option>
+                    <option id="Mid" name="Mid"value="Mid">Mid</option>
+                    <option id="High" name="High"value="High">High</option>
+                </select>
+                <div>&nbsp;</div>
+            </fieldset>
+
+            <br>
+            <!--Save Button-->
+            <button value="submit" type="submit" class="btn btn-success" id="saveTeamBtn">Save Team</button>
+        </div>
+</form>         
    
 <%- include('templates/footer'); -%>

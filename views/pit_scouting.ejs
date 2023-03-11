@@ -1,98 +1,109 @@
 <%-include ('templates/header');-%>
-    
+
+<script src="pit_scout.js"></script>
 
 <h1 style="text-align:center">Convergence Pit Scouting</h1>
 
-<div class="well">
-    <form id="teamPitInfo">
+<style>
+    .well {
+        width: 50%;
+        
+    }
+</style>
+<div class="well col-lg-6 col-lg-offset-3">
+    <form action="/pit_scouting" method="POST">
         <div class="teamAndRobotInfo">
-            <label style="display: inline;" for="teamNumberInput">Team Number</label>
-            <input type="text" class="form-control-sm" id="teamNumberInput" placeholder="7429">
+            <label style="display: inline; text-align: center;" for="teamNumberInput" >Team Number</label>
+            <input type="text" id="teamNumberInput" name="teamNumberInput" class="form-control-sm" placeholder="7429">
             <div>&nbsp;</div>
             <label style="display: inline;" for="teamWeightInput">Robot Weight (lbs) </label>
-            <input type="text" class="form-control-sm" id="teamWeightInput" placeholder="150">
+            <input type="text" id="teamWeightInput" name="teamWeightInput" class="form-control-sm" placeholder="150">
             <div>&nbsp;</div>
             <label style="display: inline;" for="teamHeightInput">Robot Height (inches) </label>
-            <input type="text" class="form-control-sm" id="teamHeightInput" placeholder="120">
+            <input type="text" id="teamHeightInput" name="teamHeightInput" class="form-control-sm" placeholder="120">
             <div>&nbsp;</div>
             <label style="display: inline;" for="teamLengthInput">Robot Length (inches) </label>
-            <input type="text" class="form-control-sm" id="teamLengthInput" placeholder="24">
+            <input type="text" id="teamLengthInput" name="teamLengthInput" class="form-control-sm" placeholder="24">
             <div>&nbsp;</div>
             <label style="display: inline;" for="teamWidthInput">Robot Width (inches) </label>
-            <input type="text" class="form-control-sm" id="teamWidthInput" placeholder="24">
+            <input type="text" id="teamWidthInput" name="teamWidthInput" class="form-control-sm" placeholder="24">
             <div>&nbsp;</div>
         </div>
 
         <div class="robotInfo">
             <!--Drivetrain-->
             <label for="robotDrivetrain">Robot Drivetrain</label>
-                <select class="form-control-sm" id="robotDrivetrain">
-                    <option>Swerve</option>
-                    <option>Mecanum </option>
-                    <option>Skid Steer</option>
+                <select name="robotDrivetrain" id="robotDrivetrain">
+                    <option id="unknown" name="unknown"value="unknown"></option>
+                    <option id="Swerve" name="Swerve" value="Swerve">Swerve</option>
+                    <option id="Mecanum" name="Mecanum" value="Mecanum">Mecanum</option>
+                    <option id="Skid Steer" name="Skid Steer" value="Skid Steer">Skid Steer</option>
                 </select>
                 <div>&nbsp;</div>
             <!--Drivetrain Motors-->
             <label for="robotDrivetrainMotors">Robot Drivetrain Motors</label>
-                <select class="form-control-sm" id="robotDrivetrainMotors">
-                    <option>Neo</option>
-                    <option>Falcon 500 </option>
-                    <option>CIM</option>
+                <select name="robotDrivetrainMotors" id="robotDrivetrainMotors">
+                    <option id="unknown" name="unknown"value="unknown">Unknown</option>
+                    <option id="Neo" name="Neo" value="Neo">Neo</option>
+                    <option id="Falcon 500" name="Falcon 500" value="Falcon 500">Falcon 500</option>
+                    <option id="CIM" name="CIM" value="CIM">CIM</option>
                 </select>
                 <div>&nbsp;</div>
             <!--Free Speed-->
             <label for="robotFreespeedinput">Free Speed (ft/s)</label>
-            <input type="text" class="form-control-sm" id="robotFreespeedInput" placeholder="10">
+            <input type="text" id="robotFreespeedinput" name="robotFreespeedinput" class="form-control-sm" placeholder="10">
             <div>&nbsp;</div>
             <!--Game Element Pickup-->
             <label for="gameElementPickup">Game Element Pickup</label>
-                <select class="form-control-sm" id="gameElementPickup">
-                    <option>Cone Floor</option>
-                    <option>Cone Substation </option>
-                    <option>Cube Floor</option>
-                    <option>Cube Substation</option>
+                <select name="gameElementPickup" id="gameElementPickup">
+                    <option id="unknown" name="unknown"value="unknown">Unknown</option>
+                    <option id="Cone Floor" name="Cone Floor" value="Cone Floor">Cone Floor</option>
+                    <option id="Cone Substation" name="Cone Substation" value="Cone Substation">Cone Substation</option>
+                    <option id="Cube Floor" name="Cube Floor" value="Cube Floor">Cube Floor</option>
+                    <option id="Cube Substation" name="Cube Substation" value="">Cube Substation</option>
                 </select>
                 <div>&nbsp;</div>
             <!--Game Element Scoring-->
             <label for="gameElementScoring">Game Element Scoring</label>
-            <select class="form-control-sm" id="gameElementScoring">
-                <option>Floor</option>
-                <option>Mid Cone</option>
-                <option>Mid Cube</option>
-                <option>High Cone</option>
-                <option>High Cube</option>
-                <option>Pushbot Only</option>
+            <select name="gameElementScoring" id="gameElementScoring">
+                <option id="unknown" name="unknown"value="unknown">Unknown</option>
+                <option id="Floor" name="Floor"value="Floor">Floor</option>
+                <option id="Mid Cone" name="Mid Cone"value="Mid Cone">Mid Cone</option>
+                <option id="Mid Cube" name="Mid Cube"value="Mid Cube">Mid Cube</option>
+                <option id="High Cone" name="High Cone"value="High Cone">High Cone</option>
+                <option id="High Cube" name="High Cube"value="High Cube">High Cube</option>
+                <option id="Pushbot Only" name="Pushbot Only"value="Pushbot Only">Pushbot Only</option>
             </select>
             <div>&nbsp;</div>
             <!--Hang Off-->
             <label for="hangOffChargeStation">Hang Off Charge Station</label>
-            <select class="form-control-sm" id="hangOffChargeStation">
-                <option>Yes</option>
-                <option>No</option>
+            <select name="hangOffChargeStation" id="hangOffChargeStation">
+                <option id="unknown" name="unknown"value="unknown">Unknown</option>
+                <option id="Yes" name="Yes"value="Yes">Yes</option>
+                <option id="No" name="No"value="No">No</option>
             </select>
             <div>&nbsp;</div>
             <!--Auto Start Position-->
             <label for="autoStartPosition">Auto Start Position</label>
-            <select class="form-control-sm" id="autoStartPosition">
-                <option>Left</option>
-                <option>Center</option>
-                <option>Right</option>
+            <select name="autoStartPosition" id="autoStartPosition">
+                <option id="unknown" name="unknown"value="unknown">Unknown</option>
+                <option id="Left" name="Left"value="Left">Left</option>
+                <option id="Center" name="Center"value="Center">Center</option>
+                <option id="Right" name="Right"value="Right">Right</option>
             </select>
             <div>&nbsp;</div>
             <!--Auto Balence-->
             <label for="autoBalance">Auto Balance</label>
-            <select class="form-control-sm" id="autoBalance">
-                <option>No</option>
-                <option>Yes</option>
+            <select name="autoBalance" id="autoBalance">
+                <option id="unknown" name="unknown"value="unknown">Unknown</option>
+                <option id="No" name="No"value="No">No</option>
+                <option id="Yes" name="Yes"value="Yes">Yes</option>
             </select>
             <div>&nbsp;</div>
 
             <!--Save Team Button-->
-            <button type="button" class="btn btn-success" id="saveTeamBtn">Save Team</button>
-
-
+            <button value="submit" type="submit" class="btn btn-success" id="saveTeamBtn">Save Team</button>
         </div>
-
     </form>
 </div>
 

@@ -1,16 +1,26 @@
 const express = require("express");
 const request = require("request");
 const tba = require("./tba")
+const db = require("./database");
+var bodyParser = require('body-parser');
 
 const app = express();
 const httpPort = 3000;
-//tba.function
-tba.testAPI('2020vapor');
-//tba.getTeamsByEvent("bob");
+
+
+//Functions to call be webpages
+//db.createEventDatabase('Portsmouth');
+//db.createAllTables();
+//tba.getTeamsByEvent('2023vapor');
+
 
 app.use(express.static("public/css"));
 app.use(express.static("public/js"));
 app.use(express.static("public/img"));
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
 app.set("view engine", "ejs");
 
 
@@ -21,15 +31,35 @@ app.get("/", function(req, res){
 
 //Pit Scouting Page
 app.get("/pit_scouting", function(req, res){
-    
-    res.render("pit_scouting", {
-     
-    });
+    res.render("pit_scouting");
+})
+
+app.post('/pit_scouting', function(req, res, next){
+    console.log(req.body);
+    res.redirect('/pit_scouting');
+})
+
+app.post('/', function(req, res, next) {
+    console.log(req.body);
+});
+
+app.get('/bob', function(req, res){
+    res.render("bob");
+});
+
+app.post('/bob', function(req, res, next){
+    console.log(req.body);
+    res.redirect('/bob');
 })
 
 //Match Scout Page
 app.get("/match_scouting", function(req, res){
     res.render("match_scouting");
+})
+
+app.post('/match_scouting', function(req, res, next){
+    console.log(req.body);
+    res.redirect('/match_scouting');
 })
 
 //Admin Page
