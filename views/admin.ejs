@@ -1,6 +1,5 @@
 <%-include ('templates/header');-%>
 
-
 <div class="well">
 <form action="/admin" method="POST" class="form-horizontal">
 <fieldset>
@@ -12,7 +11,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Event Name</label>  
   <div class="col-md-4">
-  <input type="text" id="eventName" name="eventName" class="form-control input-md" required="">
+  <input type="text" id="eventName" name="eventName" class="form-control input-md" placeholder="<%-eventName-%>"style="text-align: center;" required="">
   <span class="help-block">Event Name</span>  
   </div>
 </div>
@@ -21,28 +20,15 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">TBA Event Code</label>  
   <div class="col-md-4">
-  <input type="text" id="eventCode" name="eventCode" class="form-control input-md" required="">
+  <input type="text" id="eventCode" name="eventCode" class="form-control input-md" placeholder="<%-eventKey-%>" style="text-align: center;" required="">
   <span class="help-block">Event Code from TBA</span>
-  </div>
-</div>
-
-<!-- TBA Auth ID Input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">TBA Auth ID</label>  
-  <div class="col-md-4">
-  <input type="text" id="tba_Key" name="tba_Key" class="form-control input-md">
-  <span class="help-block">Contact TBA for this ID</span>  
   </div>
 </div>
 
 <!-- Save Button -->
 <div class="form-group">
   <div class="row align-items-end" style="text-align: center;">
-    <button value="submit" type="submit" class="btn btn-success" id="saveEventBtn"">Save Event</button>
-    <button id="Load_Teams" name="singlebutton" class="btn btn-primary">Load Teams</button>
-    <br><br>
-    <button id="Delete_Teams" name="singlebutton" class="btn btn-warning">Delete Teams</button>
-    <button id="Delete_Event" name="singlebutton" class="btn btn-danger">Delete Event</button>
+    <button value="submit" type="submit" class="btn btn-success" id="saveEventBtn">Save Event</button>
   </div>
 </div>
 
@@ -51,6 +37,7 @@
 </form>
 </div>  
 
+<!--Add Database Delete and Teams Delete-->
 
 
 <%- include('templates/footer'); -%>

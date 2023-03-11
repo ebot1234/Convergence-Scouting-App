@@ -33,3 +33,9 @@ MATCH SCOUTING:
   autoStartPosition: 'unknown',
   autoBalance: 'unknown'
 }
+
+EVENT ADMIN:
+{ 
+  eventName: '', 
+  eventCode: '' 
+}

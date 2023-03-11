@@ -1,7 +1,7 @@
 const express = require("express");
 const request = require("request");
-const tba = require("./tba")
-const db = require("./database");
+const tba = require("./tba");
+const db = require("./my-sql");
 var bodyParser = require('body-parser');
 
 const app = express();
@@ -12,7 +12,8 @@ const httpPort = 3000;
 //db.createEventDatabase('Portsmouth');
 //db.createAllTables();
 //tba.getTeamsByEvent('2023vapor');
-
+var eventName;
+var eventKey;
 
 app.use(express.static("public/css"));
 app.use(express.static("public/js"));
@@ -58,13 +59,24 @@ app.post('/match_scouting', function(req, res, next){
 
 //Admin Page
 app.get("/admin", function(req, res){
-    res.render("admin");
+    res.render("admin", 
+    {eventName : eventName,
+        eventKey : eventKey
+    });
 })
 
+var repeat = false;
+
 app.post("/admin", function(req, res, next){
-    console.log(req.body);
-    res.redirect('/admin');
+    var data = req.body;
+    eventName = `${data.eventName}`;
+    eventKey = `${data.eventCode}`;
     
+    db.createAllTables();
+    db.insertEventData(eventName, eventKey);
+    tba.getTeamsByEvent(eventKey);
+
+    res.redirect('/admin');
 })
 
 

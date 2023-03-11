@@ -1,5 +1,5 @@
 const request = require("request");
-const db = require("./database.js");
+const db = require("./my-sql.js");
 
 var tbaId = "jINO6qdzc4xGIZKGxGl6FzY1PzOT29IuOrm0jHoWH21ZHWS6OOjYXhOjl2PI8i2Y";
 var baseURL = "https://www.thebluealliance.com/api/v3";
@@ -17,18 +17,19 @@ function getTeamsByEvent(eventID){
             data = JSON.parse(body);
 
             //loop through JSON object to get each team number
-          for (team of data){
+          for(team of data){
             console.log(`${team.team_number}`);
-            db.insertTeams(`${team.team_number}`);
-            console.log("Added Team " + `${team.team_number}` +" into Event Database");
-          }
-          
+            db.insertTeam(`${team.team_number}`);
+          };
+
         }
-        console.log(db.pullTeams());
+
+       db.pullTeams();
         
     });
     
 }
+
 
 //Export functions and Variables
 module.exports = { getTeamsByEvent, data };
