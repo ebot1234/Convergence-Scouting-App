@@ -6,7 +6,6 @@ let conn = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "convergence",
-    database: "portsmouth_2023"
 });
 
 let teams;
@@ -19,6 +18,24 @@ function createEventTable(){
 
         }else{
             console.log("created event table");
+        }
+    });
+}
+
+
+function createNewEventDatabase(eventName){
+    createDatabase(eventName);
+    conn.changeUser({database: `${eventName}`}, function(err){
+        if (err){
+            console.error(err);
+        }
+    });
+}
+
+function createDatabase(eventName){
+    conn.query(`CREATE DATABASE ${eventName}`, function(err){
+        if (err) {
+            console.error(err);
         }
     });
 }
@@ -98,4 +115,4 @@ function pullTeams(){
 
 
 
-module.exports = {createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams};
+module.exports = {createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams};

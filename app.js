@@ -72,8 +72,12 @@ app.post("/admin", function(req, res, next){
     eventName = `${data.eventName}`;
     eventKey = `${data.eventCode}`;
     
+    //db.createAllTables();
+    //db.insertEventData(eventName, eventKey);
+    //tba.getTeamsByEvent(eventKey);
+
+    db.createNewEventDatabase(eventName);
     db.createAllTables();
-    db.insertEventData(eventName, eventKey);
     tba.getTeamsByEvent(eventKey);
 
     res.redirect('/admin');
