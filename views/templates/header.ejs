@@ -10,7 +10,6 @@
         
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <style>
             body {
@@ -20,7 +19,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-static-top navbar-fixed-top navbar-expand">
             <div class="container">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -41,4 +40,14 @@
               </div><!--/.nav-collapse -->
             </div>
           </nav>
+
+        
+          <script>
+            $('.navbar-collapse a').click(function(e) {
+              if ($(window).width() <= 767){
+                  $('.navbar-collapse').collapse('toggle');
+              }
+            });
+          </script>
+        
  <div class="container">
