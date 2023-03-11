@@ -9,6 +9,8 @@ let conn = mysql.createConnection({
     database: "portsmouth_2023"
 });
 
+let teams;
+
 //Creates Event Table
 function createEventTable(){
     conn.query(`CREATE TABLE Event (Event TEXT, Event_Key varchar(255))`, function(err, result){
@@ -86,7 +88,8 @@ function pullTeams(){
         if(err){
             console.error(err);
         }else{
-            console.log(result);
+            teams=result;
+            //console.log(teams);
         }
     })
 }
@@ -95,4 +98,4 @@ function pullTeams(){
 
 
 
-module.exports = {createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData};
+module.exports = {createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams};
