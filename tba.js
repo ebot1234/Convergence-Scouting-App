@@ -24,7 +24,7 @@ function getTeamsByEvent(eventID){
 
         }
 
-       db.pullTeams();
+       //db.pullTeams();
         
     });
     

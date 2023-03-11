@@ -14,6 +14,19 @@ const httpPort = 3000;
 //tba.getTeamsByEvent('2023vapor');
 var eventName;
 var eventKey;
+var number;
+var weight;
+var height;
+var length;
+var width;
+var drivetrain;
+var drivetrain_motors;
+var free_speed;
+var element_pickup;
+var element_scoring;
+var hang_charge_station;
+var start_position;
+var auto_balence;
 
 app.use(express.static("public/css"));
 app.use(express.static("public/js"));
@@ -37,7 +50,27 @@ app.get("/pit_scouting", function(req, res){
 
 //Pit Scouting POST
 app.post('/pit_scouting', function(req, res, next){
-    console.log(req.body);
+    var data = req.body;
+    console.log(data);
+
+    number = `${data.teamNumberInput}`;
+    weight = `${data.teamNumberInput}`;
+    height = `${data.teamNumberInput}`;
+    length = `${data.teamNumberInput}`;
+    width = `${data.teamNumberInput}`;
+    drivetrain = `${data.teamNumberInput}`;
+    drivetrain_motors = `${data.teamNumberInput}`;
+    free_speed = `${data.teamNumberInput}`;
+    element_pickup = `${data.teamNumberInput}`;
+    element_scoring = `${data.teamNumberInput}`;
+    hang_charge_station = `${data.teamNumberInput}`;
+    start_position = `${data.teamNumberInput}`;
+    auto_balence = `${data.teamNumberInput}`;
+
+    db.createNewEventDatabase(eventName);
+    db.insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence);
+
+
     res.redirect('/pit_scouting');
 })
 
@@ -78,6 +111,7 @@ app.post("/admin", function(req, res, next){
 
     db.createNewEventDatabase(eventName);
     db.createAllTables();
+    db.insertEventData(eventName, eventKey);
     tba.getTeamsByEvent(eventKey);
 
     res.redirect('/admin');

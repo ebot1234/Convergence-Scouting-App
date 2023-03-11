@@ -55,20 +55,19 @@ function createEventTeamsTable(){
 //Create TeamInfo Table
 function createTeamInfoTable(){
     conn.query(`CREATE TABLE Team_Info (
-        id INT PRIMARY KEY,
         Number INT,
         Weight INT,
         Height INT,
         Length INT,
         Width INT,
-        Drivetrain TEXT,
-        Drivetrain_Motors TEXT,
+        Drivetrain INT,
+        Drivetrain_Motors INT,
         FreeSpeed INT,
-        Element_Pickup TEXT,
-        Element_Scoring TEXT,
-        Hang_Charge BOOL,
-        Start_Position TEXT,
-        Auto_Balence TEXT
+        Element_Pickup INT,
+        Element_Scoring INT,
+        Hang_Charge INT,
+        Start_Position INT,
+        Auto_Balence INT
     )`, function(err, result){
         if(err) {
             console.error(err);
@@ -78,6 +77,25 @@ function createTeamInfoTable(){
         }
     });
 }
+
+function insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence){
+    query = `INSERT INTO Team_Info(Number,
+        Weight,
+        Height,
+        Length,
+        Width,
+        Drivetrain,
+        Drivetrain_Motors,
+        FreeSpeed,
+        Element_Pickup,
+        Element_Scoring,
+        Hang_Charge,
+        Start_Position,
+        Auto_Balence) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+
+    conn.query(query, [number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence]);
+}
+
 
 //Inserts teams into EventTeams Database
 function insertTeam(team){
@@ -115,4 +133,4 @@ function pullTeams(){
 
 
 
-module.exports = {createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams};
+module.exports = {insertTeamData, createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams};
