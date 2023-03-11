@@ -2,7 +2,7 @@
 
 
 <div class="well">
-<form class="form-horizontal">
+<form action="/admin" method="POST" class="form-horizontal">
 <fieldset>
 
 <!-- Event Settings Form -->
@@ -12,7 +12,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Event Name</label>  
   <div class="col-md-4">
-  <input id="Event_Name" name="textinput" type="text" placeholder="EventName" class="form-control input-md" required="">
+  <input type="text" id="eventName" name="eventName" class="form-control input-md" required="">
   <span class="help-block">Event Name</span>  
   </div>
 </div>
@@ -21,8 +21,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">TBA Event Code</label>  
   <div class="col-md-4">
-  <input id="TBA_Event_Code" name="textinput" type="text" placeholder="TBA Event Code" class="form-control input-md" required="">
-  <span class="help-block">Event Code from TBA</span>  
+  <input type="text" id="eventCode" name="eventCode" class="form-control input-md" required="">
+  <span class="help-block">Event Code from TBA</span>
   </div>
 </div>
 
@@ -30,7 +30,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">TBA Auth ID</label>  
   <div class="col-md-4">
-  <input id="TBA_Auth_ID" name="textinput" type="text" placeholder="TBA Auth ID" class="form-control input-md">
+  <input type="text" id="tba_Key" name="tba_Key" class="form-control input-md">
   <span class="help-block">Contact TBA for this ID</span>  
   </div>
 </div>
@@ -38,7 +38,7 @@
 <!-- Save Button -->
 <div class="form-group">
   <div class="row align-items-end" style="text-align: center;">
-    <button id="Save_Event" name="singleButton" class="btn btn-success">Save Event</button>
+    <button value="submit" type="submit" class="btn btn-success" id="saveEventBtn"">Save Event</button>
     <button id="Load_Teams" name="singlebutton" class="btn btn-primary">Load Teams</button>
     <br><br>
     <button id="Delete_Teams" name="singlebutton" class="btn btn-warning">Delete Teams</button>

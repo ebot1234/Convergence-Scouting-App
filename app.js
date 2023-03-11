@@ -8,7 +8,7 @@ const app = express();
 const httpPort = 3000;
 
 
-//Functions to call be webpages
+//Functions to call by webpages
 //db.createEventDatabase('Portsmouth');
 //db.createAllTables();
 //tba.getTeamsByEvent('2023vapor');
@@ -29,11 +29,12 @@ app.get("/", function(req, res){
     res.render("homepage");
 })
 
-//Pit Scouting Page
+//Pit Scouting GET
 app.get("/pit_scouting", function(req, res){
     res.render("pit_scouting");
 })
 
+//Pit Scouting POST
 app.post('/pit_scouting', function(req, res, next){
     console.log(req.body);
     res.redirect('/pit_scouting');
@@ -43,20 +44,13 @@ app.post('/', function(req, res, next) {
     console.log(req.body);
 });
 
-app.get('/bob', function(req, res){
-    res.render("bob");
-});
 
-app.post('/bob', function(req, res, next){
-    console.log(req.body);
-    res.redirect('/bob');
-})
-
-//Match Scout Page
+//Match Scout GET
 app.get("/match_scouting", function(req, res){
     res.render("match_scouting");
 })
 
+//Match Scout POST
 app.post('/match_scouting', function(req, res, next){
     console.log(req.body);
     res.redirect('/match_scouting');
@@ -65,6 +59,12 @@ app.post('/match_scouting', function(req, res, next){
 //Admin Page
 app.get("/admin", function(req, res){
     res.render("admin");
+})
+
+app.post("/admin", function(req, res, next){
+    console.log(req.body);
+    res.redirect('/admin');
+    
 })
 
 
@@ -76,7 +76,7 @@ app.get("*", function(req, res){
 
 
 
-
+//Server Start
 app.listen(httpPort, function(){
     console.log("Convergence Scouting Server Running on Port:" + httpPort);
 })
