@@ -1,0 +1,39 @@
+<%-include ('templates/header');-%>
+
+<style>
+.table {
+    margin: 0 auto;
+    width: 80%;
+}
+</style>
+
+<div style="text-align: center; font-size: large; font-weight: bolder;">Team List</div>
+
+<div>
+    <table class="table ">
+        <thread>
+            <tr>
+                <th>Team Number</th>
+                <th>Name</th>
+                <th>Rookie Year</th>
+            </tr>
+        </thread>
+
+        <tr>
+            <% data.forEach(entry => { %>
+                <td><%= entry.Number %></td>
+                <td><%= entry.Nickname %></td>
+                <td><%= entry.Rookie %></td>
+        </tr>
+            <%  }) %>
+        </tr>
+    </table>
+
+
+</div>
+
+<br>
+
+
+
+<%- include('templates/footer'); -%>

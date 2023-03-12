@@ -15,6 +15,8 @@
     "jquery": "^3.6.4",
     "mongodb": "5.1",
     "mysql2": "^3.2.0",
+    "pdfkit": "^0.13.0",
+    "pdfkit-table": "^0.1.99",
     "request": "^2.88.2",
     "sqlite3": "^5.1.4"
   }

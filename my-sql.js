@@ -42,7 +42,7 @@ function createDatabase(eventName){
 
 //Creates EventTeams Table
 function createEventTeamsTable(){
-    conn.query(`CREATE TABLE EventTeams (Number INT)`, function(err, result){
+    conn.query(`CREATE TABLE EventTeams (Number INT, Nickname VARCHAR(255), Rookie VARCHAR(255))`, function(err, result){
         if(err) {
             console.error(err);
 
@@ -98,9 +98,9 @@ function insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_
 
 
 //Inserts teams into EventTeams Database
-function insertTeam(team){
-    team_sql = `INSERT INTO EventTeams(Number) VALUES (?)`;
-    conn.query(team_sql, team);
+function insertTeam(team, nickname, rookie_year){
+    team_sql = `INSERT INTO EventTeams(Number, Nickname, Rookie) VALUES (?,?,?)`;
+    conn.query(team_sql, [team, nickname, rookie_year]);
 }
 
 function insertEventData(code, key){
@@ -133,4 +133,4 @@ function pullTeams(){
 
 
 
-module.exports = {insertTeamData, createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams};
+module.exports = {insertTeamData, createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams, conn};

@@ -1,3 +1,5 @@
+//Handles all API Interaction with TheBlueAlliance API
+
 const request = require("request");
 const db = require("./my-sql.js");
 
@@ -7,7 +9,7 @@ var data;
 
 //Pulls teams and puts them in database
 function getTeamsByEvent(eventID){
-    queryString = baseURL + '/event/' + eventID + '/teams/simple';
+    queryString = baseURL + '/event/' + eventID + '/teams';
 
     request.get( {url : queryString, headers : {"X-TBA-Auth-Key" : tbaId}}, function(error, response, body){
         if(error){
@@ -18,8 +20,9 @@ function getTeamsByEvent(eventID){
 
             //loop through JSON object to get each team number
           for(team of data){
-            console.log(`${team.team_number}`);
-            db.insertTeam(`${team.team_number}`);
+            //console.log(`${team.team_number}`);
+            db.insertTeam(`${team.team_number}`, `${team.nickname}`, `${team.rookie_year}`);
+            console.log("Inserted teams into Database");
           };
 
         }

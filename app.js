@@ -70,7 +70,6 @@ app.post('/pit_scouting', function(req, res, next){
     db.createNewEventDatabase(eventName);
     db.insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence);
 
-
     res.redirect('/pit_scouting');
 })
 
@@ -78,6 +77,17 @@ app.post('/', function(req, res, next) {
     console.log(req.body);
 });
 
+app.post('/reports/pdf/pit_scouting', function(req, res, next){
+    res.download('pit_scouting.pdf');
+});
+
+app.post('/reports/pdf/match_scouting', function(req, res, next){
+    res.download('match_scouting.pdf');
+});
+
+app.post('/reports/pdf/team_list', function(req, res, next){
+    res.download('team_list.pdf');
+});
 
 //Match Scout GET
 app.get("/match_scouting", function(req, res){
@@ -97,6 +107,26 @@ app.get("/admin", function(req, res){
         eventKey : eventKey
     });
 })
+
+
+app.get("/team_table", function(req, res){
+    db.conn.query('SELECT * FROM EventTeams', function (err, result){
+        if (err){
+            console.error(err)
+        }else{
+            res.render('team_table', {data : result});
+        }
+    });
+})
+
+app.get("/match_info_table", function(res, req){
+  
+})
+
+app.get("/pit_scouting_table", function(res, req){
+   
+})
+
 
 var repeat = false;
 
@@ -118,11 +148,11 @@ app.post("/admin", function(req, res, next){
 })
 
 
+
 //404 Page Error
 app.get("*", function(req, res){
     res.send("404 Page Not Found!");
 })
-
 
 
 
