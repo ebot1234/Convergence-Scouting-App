@@ -67,7 +67,7 @@ function createTeamInfoTable(){
         Element_Scoring Text,
         Hang_Charge Text,
         Start_Position Text,
-        Auto_Balence Text
+        Auto_Balance Text
     )`, function(err, result){
         if(err) {
             console.error(err);
@@ -76,6 +76,55 @@ function createTeamInfoTable(){
             console.log("created team info table");
         }
     });
+}
+
+function createMatchTable(){
+    conn.query(`CREATE TABLE Match_Info (
+        Number Text,
+        MatchNum Text,
+        Placement Text,
+        Mobility Text,
+        AutoBalance Text,
+        ConeHigh Text,
+        ConeLow Text,
+        CubeScore Text,
+        TeleBalance Text,
+        TeleConeHigh Text,
+        TeleConeLow Text,
+        TeleCube Text
+        )`, function(err, result){
+        if(err) {
+            console.error(err);
+
+        }else{
+            console.log("created match scouting table");
+        }
+    });
+}
+
+function insertMatchData(number,Match,Placement,Mobility,AutoBalance,ConeHigh,ConeLow,CubeScore,TeleBalance,TeleConeHigh,TeleConeLow,TeleCube){
+    query = `INSERT INTO Match_Info(
+        Number,
+        MatchNum,
+        Placement,
+        Mobility,
+        AutoBalance,
+        ConeHigh,
+        ConeLow,
+        CubeScore,
+        TeleBalance,
+        TeleConeHigh,
+        TeleConeLow,
+        TeleCube
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`;
+
+        conn.query(query, [number,Match,Placement,Mobility,AutoBalance,ConeHigh,ConeLow,CubeScore,TeleBalance,TeleConeHigh,TeleConeLow,TeleCube], function(err){
+            if (err) {
+                console.error(err);
+            }else{
+                console.log("Inserted Data into Match Table");
+            }
+        });
 }
 
 function insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence){
@@ -91,26 +140,45 @@ function insertTeamData(number,weight,height,length,width,drivetrain,drivetrain_
         Element_Scoring,
         Hang_Charge,
         Start_Position,
-        Auto_Balence) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+        Auto_Balance) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
-    conn.query(query, [number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence]);
+    conn.query(query, [number,weight,height,length,width,drivetrain,drivetrain_motors,free_speed,element_pickup,element_scoring, hang_charge_station,start_position,auto_balence], function(err){
+        if (err){
+            console.error(err);
+        }else{
+            console.log("Inserted Data Into Team Table");
+        }
+    });
 }
 
 
 //Inserts teams into EventTeams Database
 function insertTeam(team, nickname, rookie_year){
     team_sql = `INSERT INTO EventTeams(Number, Nickname, Rookie) VALUES (?,?,?)`;
-    conn.query(team_sql, [team, nickname, rookie_year]);
+    conn.query(team_sql, [team, nickname, rookie_year], function(err){
+        if (err){
+            console.error(err);
+        } else{
+            console.log("Inserted team info");
+        }
+    });
 }
 
 function insertEventData(code, key){
     sql = `INSERT INTO Event (Event, Event_Key) VALUES (?,?)`;
-    conn.query(sql, [code, key]);
+    conn.query(sql, [code, key], function(err){
+        if (err){
+            console.error(err);
+        } else {
+            console.log("Inserted Event Data");
+        }
+    });
 }
 
 //Creates all tables
 function createAllTables(){
     createEventTable();
+    createMatchTable();
     createEventTeamsTable();
     createTeamInfoTable();
 }
@@ -133,4 +201,4 @@ function pullTeams(){
 
 
 
-module.exports = {insertTeamData, createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams, conn};
+module.exports = {createMatchTable, insertMatchData, insertTeamData, createNewEventDatabase, createEventTable, createEventTeamsTable, createTeamInfoTable, insertTeam, createAllTables, pullTeams, insertEventData, teams, conn};

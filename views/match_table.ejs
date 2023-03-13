@@ -1,0 +1,64 @@
+<%-include ('templates/header');-%>
+
+<style>
+.table {
+    margin: 0 auto;
+    width: 80%;
+}
+
+th{
+    text-align: center;
+    font: bolder;
+}
+</style>
+
+<div style="text-align: center; font-size: large; font-weight: bolder;">Match Scouting Info</div>
+
+<div>
+    <table class="table table-striped table-bordered table-condensed" style="text-align: center;">
+        <thread>
+            <tr>
+                <th>Team Number</th>
+                <th>Match Number</th>
+                <th>Auto Placement</th>
+                <th>Auto Mobility</th>
+                <th>Auto Balance</th>
+                <th>Auto Cone High</th>
+                <th>Auto Cone Low</th>
+                <th>Auto Cube</th>
+                <th>Tele Cone High</th>
+                <th>Tele Cone Low</th>
+                <th>Tele Cube</th>
+                <th>Endgame Balance</th>
+            </tr>
+        </thread>
+
+
+        <tr>
+            <% data.forEach(entry => { %>
+                <td><%= entry.Number %></td>
+                <td><%= entry.MatchNum %></td>
+                <td><%= entry.Placement %></td>
+                <td><%= entry.Mobility %></td>
+                <td><%= entry.AutoBalance %></td>
+                <td><%= entry.ConeHigh %></td>
+                <td><%= entry.ConeLow %></td>
+                <td><%= entry.CubeScore %></td>
+                <td><%= entry.TeleConeHigh %></td>
+                <td><%= entry.TeleConeLow %></td>
+                <td><%= entry.TeleCube %></td>
+                <td><%= entry.TeleBalance %></td>
+                
+
+        </tr>
+            <%  }) %>
+        </tr>
+
+    </table>
+</div>
+
+<br>
+
+
+
+<%- include('templates/footer'); -%>

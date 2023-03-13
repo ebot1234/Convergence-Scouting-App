@@ -77,17 +77,6 @@ app.post('/', function(req, res, next) {
     console.log(req.body);
 });
 
-app.post('/reports/pdf/pit_scouting', function(req, res, next){
-    res.download('pit_scouting.pdf');
-});
-
-app.post('/reports/pdf/match_scouting', function(req, res, next){
-    res.download('match_scouting.pdf');
-});
-
-app.post('/reports/pdf/team_list', function(req, res, next){
-    res.download('team_list.pdf');
-});
 
 //Match Scout GET
 app.get("/match_scouting", function(req, res){
@@ -96,7 +85,24 @@ app.get("/match_scouting", function(req, res){
 
 //Match Scout POST
 app.post('/match_scouting', function(req, res, next){
-    console.log(req.body);
+    var data = req.body;
+    console.log(data);
+
+    number = `${data.teamNumberInput}`;
+    match = `${data.matchNumberInput}`;
+    placement = `${data.autoPlacement}`;
+    mobility = `${data.autoMobility}`;
+    autoBalance = `${data.autoBalance}`;
+    coneHigh = `${data.autoConeHighScore}`;
+    coneLow = `${data.autoConeLowScore}`;
+    cubeScore = `${data.autoCubeScore}`;
+    teleConeHigh = `${data.teleConeHighScore}`;
+    teleConeLow = `${data.teleConeLowScore}`;
+    teleCube = `${data.teleCubeScore}`;
+    teleBalance = `${data.teleBalance}`;
+
+    db.insertMatchData(number,match,placement,mobility,autoBalance,coneHigh,coneLow,cubeScore,teleBalance,teleConeHigh,teleConeLow,teleCube);
+
     res.redirect('/match_scouting');
 })
 
@@ -108,36 +114,44 @@ app.get("/admin", function(req, res){
     });
 })
 
-
+//Posts Team List Table
 app.get("/team_table", function(req, res){
     db.conn.query('SELECT * FROM EventTeams', function (err, result){
         if (err){
-            console.error(err)
+            console.error(err);
         }else{
             res.render('team_table', {data : result});
         }
     });
 })
 
-app.get("/match_info_table", function(res, req){
-  
+//Posts Match Scouting Table
+app.get("/match_table", function(req, res){
+    db.conn.query('SELECT * FROM match_info ORDER BY MatchNum ASC', function (err, result){
+        if (err){
+            console.error(err);
+        }else{
+            res.render('match_table', {data : result});
+        }
+    });
 })
 
-app.get("/pit_scouting_table", function(res, req){
-   
+//Posts Pit Scouting Table
+app.get("/pit_table", function(req, res){
+    db.conn.query('SELECT * FROM team_info', function (err, result){
+        if (err){
+            console.error(err);
+        }else{
+            res.render('pit_table', {data : result});
+        }
+    });
 })
 
-
-var repeat = false;
 
 app.post("/admin", function(req, res, next){
     var data = req.body;
     eventName = `${data.eventName}`;
     eventKey = `${data.eventCode}`;
-    
-    //db.createAllTables();
-    //db.insertEventData(eventName, eventKey);
-    //tba.getTeamsByEvent(eventKey);
 
     db.createNewEventDatabase(eventName);
     db.createAllTables();
@@ -146,8 +160,6 @@ app.post("/admin", function(req, res, next){
 
     res.redirect('/admin');
 })
-
-
 
 //404 Page Error
 app.get("*", function(req, res){

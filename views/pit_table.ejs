@@ -1,0 +1,61 @@
+<%-include ('templates/header');-%>
+
+<style>
+.table {
+    margin: 0 auto;
+    width: 80%;
+}
+
+th{
+    text-align: center;
+    font: bolder;
+}
+</style>
+
+<div style="text-align: center; font-size: large; font-weight: bolder;">Pit Team Info</div>
+
+<div>
+    <table class="table table-striped table-bordered table-condensed" style="text-align: center;">
+        <thread>
+            <tr>
+                <th>Team Number</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>Length</th>
+                <th>Drivetrain</th>
+                <th>Drivetrain Motors</th>
+                <th>Free Speed (ft/sec)</th>
+                <th>Element Pickup</th>
+                <th>Element Scoring</th>
+                <th>Hangoff Charge Station</th>
+                <th>Start Position</th>
+                <th>Auto Balance</th>
+            </tr>
+        </thread>
+
+        <tr>
+            <% data.forEach(entry => { %>
+                <td><%= entry.Number %></td>
+                <td><%= entry.Weight %></td>
+                <td><%= entry.Height %></td>
+                <td><%= entry.Length %></td>
+                <td><%= entry.Drivetrain %></td>
+                <td><%= entry.Drivetrain_Motors %></td>
+                <td><%= entry.FreeSpeed %></td>
+                <td><%= entry.Element_Pickup %></td>
+                <td><%= entry.Element_Scoring %></td>
+                <td><%= entry.Hang_Charge %></td>
+                <td><%= entry.Start_Position %></td>
+                <td><%= entry.Auto_Balance %></td>
+        </tr>
+            <%  }) %>
+        </tr>
+    </table>
+
+</div>
+
+<br>
+
+
+
+<%- include('templates/footer'); -%>
