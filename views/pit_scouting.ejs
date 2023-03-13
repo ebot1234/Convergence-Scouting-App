@@ -7,13 +7,23 @@
 <h1 style="text-align:center">Convergence Pit Scouting</h1>
 
 <style>
-    .well {
-        width: 50%;
-        
-    }
+   h1 {
+    text-align: center;
+}
+
+.well {
+    text-align: center;
+}
+
+.scoring-section {
+    text-align: justify;
+    padding-left: 50px;
+    font-size: medium;
+}
+
 </style>
-<div class="well col-lg-6 col-lg-offset-3">
-    <form action="/pit_scouting" method="POST">
+<form action="/pit_scouting" method="POST">
+    <div class="well col-lg-6 col-lg-offset-3">
         <div class="teamAndRobotInfo">
             <label style="display: inline; text-align: center;" for="teamNumberInput" >Team Number</label>
             <input type="text" id="teamNumberInput" name="teamNumberInput" class="form-control-sm" placeholder="7429">
@@ -106,7 +116,8 @@
             <!--Save Team Button-->
             <button value="submit" type="submit" class="btn btn-success" id="saveTeamBtn">Save Team</button>
         </div>
-    </form>
-</div>
+      </div>
+</form>
+
 
 <%- include('templates/footer'); -%>
