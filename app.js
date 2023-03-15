@@ -7,11 +7,9 @@ var bodyParser = require('body-parser');
 const app = express();
 const httpPort = 3000;
 
+let keep_alive = false;
 
-//Functions to call by webpages
-//db.createEventDatabase('Portsmouth');
-//db.createAllTables();
-//tba.getTeamsByEvent('2023vapor');
+
 var eventName;
 var eventKey;
 var number;
@@ -103,6 +101,8 @@ app.post('/match_scouting', function(req, res, next){
 
     db.insertMatchData(number,match,placement,mobility,autoBalance,coneHigh,coneLow,cubeScore,teleBalance,teleConeHigh,teleConeLow,teleCube);
 
+    keep_alive = true;
+
     res.redirect('/match_scouting');
 })
 
@@ -127,6 +127,7 @@ app.get("/team_table", function(req, res){
 
 //Posts Match Scouting Table
 app.get("/match_table", function(req, res){
+
     db.conn.query('SELECT * FROM match_info ORDER BY MatchNum ASC', function (err, result){
         if (err){
             console.error(err);
@@ -138,6 +139,7 @@ app.get("/match_table", function(req, res){
 
 //Posts Pit Scouting Table
 app.get("/pit_table", function(req, res){
+
     db.conn.query('SELECT * FROM team_info', function (err, result){
         if (err){
             console.error(err);
@@ -145,6 +147,7 @@ app.get("/pit_table", function(req, res){
             res.render('pit_table', {data : result});
         }
     });
+
 })
 
 
@@ -167,6 +170,14 @@ app.get("*", function(req, res){
 })
 
 
+function pingdb() {
+    var sql_keep = `SELECT 1 + 1 AS solution`; 
+    db.conn.query(sql_keep, function (err, result) {
+      if (err) throw err;
+      console.log("Ping DB");
+    });
+  }
+  setInterval(pingdb, 600000);
 
 //Server Start
 app.listen(httpPort, function(){

@@ -194,9 +194,8 @@ function pullTeams(){
             teams=result;
             //console.log(teams);
         }
-    })
+    });
 }
-
 
 
 
