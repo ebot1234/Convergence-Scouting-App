@@ -88,10 +88,12 @@ function createMatchTable(){
         ConeHigh Text,
         ConeLow Text,
         CubeScore Text,
+        AutoScore Text,
         TeleBalance Text,
         TeleConeHigh Text,
         TeleConeLow Text,
-        TeleCube Text
+        TeleCube Text,
+        TeleScore Text
         )`, function(err, result){
         if(err) {
             console.error(err);
@@ -102,7 +104,7 @@ function createMatchTable(){
     });
 }
 
-function insertMatchData(number,Match,Placement,Mobility,AutoBalance,ConeHigh,ConeLow,CubeScore,TeleBalance,TeleConeHigh,TeleConeLow,TeleCube){
+function insertMatchData(number,Match,Placement,Mobility,AutoBalance,ConeHigh,ConeLow,CubeScore,AutoScore,TeleBalance,TeleConeHigh,TeleConeLow,TeleCube, TeleScore){
     query = `INSERT INTO Match_Info(
         Number,
         MatchNum,
@@ -112,13 +114,15 @@ function insertMatchData(number,Match,Placement,Mobility,AutoBalance,ConeHigh,Co
         ConeHigh,
         ConeLow,
         CubeScore,
+        AutoScore,
         TeleBalance,
         TeleConeHigh,
         TeleConeLow,
-        TeleCube
-        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`;
+        TeleCube,
+        TeleScore
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
-        conn.query(query, [number,Match,Placement,Mobility,AutoBalance,ConeHigh,ConeLow,CubeScore,TeleBalance,TeleConeHigh,TeleConeLow,TeleCube], function(err){
+        conn.query(query, [number,Match,Placement,Mobility,AutoBalance,ConeHigh,ConeLow,CubeScore,AutoScore,TeleBalance,TeleConeHigh,TeleConeLow,TeleCube,TeleScore], function(err){
             if (err) {
                 console.error(err);
             }else{

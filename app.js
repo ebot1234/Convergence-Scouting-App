@@ -93,13 +93,15 @@ app.post('/match_scouting', function(req, res, next){
     autoBalance = `${data.autoBalance}`;
     coneHigh = `${data.autoConeHighScore}`;
     coneLow = `${data.autoConeLowScore}`;
-    cubeScore = `${data.autoCubeScore}`;
+    cubeScore = `${data.autoCubeScore}`
+    autoScore = `${data.autoScore}`;
     teleConeHigh = `${data.teleConeHighScore}`;
     teleConeLow = `${data.teleConeLowScore}`;
     teleCube = `${data.teleCubeScore}`;
     teleBalance = `${data.teleBalance}`;
+    teleScore = `${data.teleScore}`;
 
-    db.insertMatchData(number,match,placement,mobility,autoBalance,coneHigh,coneLow,cubeScore,teleBalance,teleConeHigh,teleConeLow,teleCube);
+    db.insertMatchData(number,match,placement,mobility,autoBalance,coneHigh,coneLow,cubeScore,autoScore,teleBalance,teleConeHigh,teleConeLow,teleCube, teleScore);
 
     keep_alive = true;
 
