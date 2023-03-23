@@ -177,7 +177,7 @@ function pingdb() {
       console.log("Ping DB");
     });
   }
-  setInterval(pingdb, 600000);
+  setInterval(pingdb, 3600000);
 
 //Server Start
 app.listen(httpPort, function(){
